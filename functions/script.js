@@ -56,7 +56,7 @@ function zarkovo (a, b) {
     return counter;
 }
 
-// console.log(zarkovo('a', 'ana brnabic'));
+console.log(zarkovo('a', 'ana brnabic'));
 
 function beleVode (a, b) {
     var i = 0;
