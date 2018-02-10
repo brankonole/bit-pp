@@ -1,13 +1,12 @@
-// function addition (a, b) {
-//     var sum;
+function addition (a, b) {
+    var sum;
 
-//     sum = a+b;
+    sum = a+b;
     
-//     return sum;
-// }
+    return sum;
+}
 
-// var s = addition(2, 3);
-
+var s = addition(2, 3);
 // console.log(s);
 
 function jadranskaLesnica (a) {
@@ -18,32 +17,32 @@ function jadranskaLesnica (a) {
     }
 }
 
-// var s = jadranskaLesnica('abc');
+var s = jadranskaLesnica('abc');
 // console.log(s);
 
-// function umcari(a) {
-//     if ( a === ' ') {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
+function umcari(a) {
+    if ( a === ' ') {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-// // console.log(umcari());
+// console.log(umcari(' '));
 
-// function toba (a) {
-//    var i = 0;
-//    var s = 'Ha';
-//    var line = "";
-//     while (i < a) {
-        
-//         i++;
-//         line = line + s;
+function toba (a, b) {
+   var i = 0;
+   var line = "";
+    while (i < a) {      
+        i++;
+        line = line + b;
          
-//     }return line
-// }
+    }
+    
+    return line;
+}
 
-// console.log(toba(333)  )
+// console.log(toba(10, "Ha"));
 
 function zarkovo (a, b) {
     var counter = 0;
@@ -53,19 +52,23 @@ function zarkovo (a, b) {
             counter++;
         }
     }
+
     return counter;
 }
 
-console.log(zarkovo('a', 'ana brnabic'));
+// console.log(zarkovo('a', 'ana brnabic'));
 
 function beleVode (a, b) {
     var i = 0;
+
     while (i < b.length) {
         if ( a === b[i]) {
             break;
         }
         i++;
-    } return i;
+    }
+    
+    return i;
 }
 
 // console.log(beleVode("b", "ana brnabic"));
@@ -74,9 +77,7 @@ function beleVode (a, b) {
     var i = b.length - 1;
     while (i >= 0) {
         if ( a === b[i]) {
-
             return i;
-
         } 
         i--;    
     }
@@ -98,10 +99,11 @@ function stingToArray(a) {
             }            
         }
     }
+
     return b;
 }
 
-// console.log(stingToArray("My random"));
+console.log(stingToArray("My random text"));
 
 
 

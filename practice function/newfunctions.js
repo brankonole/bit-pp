@@ -17,6 +17,21 @@
 // console.log(multipliesEveryPositiveElement(x));
 
 
-function firstElementLargerThanMinimum(x) {
-    
+function firstElementLargerThanMinimum(arr) {
+    var a = arr[0],
+        b = arr[0];
+
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < a) {
+            b = a;
+            a = arr[i];
+        } else if (arr[i] < b) {
+            b = arr[i];
+        }
+    }
+   
+    return b;
 }
+
+var arr = [11, 7, 8, 2, 9];
+console.log(firstElementLargerThanMinimum(arr));

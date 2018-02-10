@@ -33,6 +33,6 @@ function merge(a, b) {
 
 var firstArray = [4, 6, 11, 18, 32];
 var secondArray = [-1, 7, 13, 15];
-
 var finalArray = merge (firstArray, secondArray);
+
 console.log(finalArray);
