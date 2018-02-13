@@ -1,3 +1,5 @@
+"use strict";
+
 function addition (a, b) {
     var sum;
 
@@ -7,7 +9,7 @@ function addition (a, b) {
 }
 
 var s = addition(2, 3);
-// console.log(s);
+console.log(s);
 
 function jadranskaLesnica (a) {
     if ( typeof a == 'string') {

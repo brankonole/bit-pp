@@ -224,7 +224,48 @@ function InsertArray (e,p,a) {
  } return c;
 
 }
-console.log(InsertArray(78,3,[2, -2, 33, 12, 5, 8]));
+// console.log(InsertArray(78,3,[2, -2, 33, 12, 5, 8]));
+
+//zadatak 15
+var s = ["Hello", "World", "in", "a", "frame"];
+
+var frame_star = function (v) {
+
+   
+    var stars = "";
+    var n = 0;
+    var k = 0;
+    var h;
+    for (var i = 0; i < 7; i++) {
+        if (i === 0 || i === 7) {
+            for (var j = 0; j < 10; j++) {
+                stars += "*";
+            }
+        } else {
+            for (k = 0; k < 10; k++) {
+                //stars = "";
+                if (k == 0 || k == 9) {
+                    stars += "*";
+                } else if (k == 1 || k == 8) {
+                    stars += " ";
+                } else {
+
+                    for (h = 0; h < v[n].length; h++) {
+                        stars += v[n][h];
+                    }
+                    n++;
+                }
+               
+            }
+
+
+        }
+        stars += "\n";
+
+    }
+    return stars;
+}
+console.log(frame_star(s));
 
 
 
