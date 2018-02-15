@@ -51,55 +51,49 @@
 
 // }
 
-var a = [2, 444, 16678],
-    b = [12, 1235, 999];
+// var a = [2, 444, 16678],
+//     b = [12, 1235, 999];
 
-function sum (a,b) {
-    return a + b;
-}
+// function sum (a,b) {
+//     return a + b;
+// }
 
-function sumArrays(a, b, f) {
-    var c = [];
+// function sumArrays(a, b, f) {
+//     var c = [];
 
-    for (var i = 0; i < a.length; i++) {
-        c[i] = sum(a[i], b[i]);
-    }
+//     for (var i = 0; i < a.length; i++) {
+//         c[i] = sum(a[i], b[i]);
+//     }
 
-    return c;
-}
+//     return c;
+// }
 
-// console.log(sumArrays(a, b, sum));
+// // console.log(sumArrays(a, b, sum));
 
-function f(name, surname) {
-    return function () {
-        console.log('' + name + '.' + surname + '@gmail.com'); 
-    }
-}
+// function f(name, surname) {
+//     return function () {
+//         console.log('' + name + '.' + surname + '@gmail.com'); 
+//     }
+// }
 
-// f('mika', 'mikic')();
-
-
-var result = (function f(a) {
-    var counter = 0;
-    var b = "";
-    var star = '*';
-
-    for (var i = 0; i <a.length; i++) {
-        if (a[i] == 'a') {
-            b +=  star;
-            counter++;
-        } else {
-            b += a[i];
-        }
-    }
-    console.log(counter);
-    return b;
-})('javascript');
-
-console.log(result);
+// // f('mika', 'mikic')();
 
 
+// var result = (function f(a) {
+//     var counter = 0;
+//     var b = "";
+//     var star = '*';
 
+//     for (var i = 0; i <a.length; i++) {
+//         if (a[i] == 'a') {
+//             b +=  star;
+//             counter++;
+//         } else {
+//             b += a[i];
+//         }
+//     }
+//     console.log(counter);
+//     return b;
+// })('javascript');
 
-
-
+// console.log(result);
