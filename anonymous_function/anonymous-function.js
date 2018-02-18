@@ -209,63 +209,68 @@
 // }
 // console.log(delArray([4, 6, 2, 8, 2, 2],2));
 
-function InsertArray (e,p,a) {
-    var c = a;
-    var j = (p+1);
+// function InsertArray (e,p,a) {
+//     var c = a;
+//     var j = (p+1);
     
     
-    c[p] = e;
-    while (j < a.length) {
-        c[j] = a[p];
-        p++;
-        j++;
-        console.log(p);
+//     c[p] = e;
+//     while (j < a.length) {
+//         c[j] = a[p];
+//         p++;
+//         j++;
+//         console.log(p);
         
- } return c;
+//  } return c;
 
-}
+// }
 // console.log(InsertArray(78,3,[2, -2, 33, 12, 5, 8]));
 
 //zadatak 15
-var s = ["Hello", "World", "in", "a", "frame"];
+// var arr = ["Hello", "World", "in", "a", "frame"];
 
-var frame_star = function (v) {
+// var frame_star = function (arr) {
+//     var stars = "";
+//     var n = 0;
+//     var l = 0;
+//     var longestString = arr[0].length;
 
-   
-    var stars = "";
-    var n = 0;
-    var k = 0;
-    var h;
-    for (var i = 0; i < 7; i++) {
-        if (i === 0 || i === 7) {
-            for (var j = 0; j < 10; j++) {
-                stars += "*";
-            }
-        } else {
-            for (k = 0; k < 10; k++) {
-                //stars = "";
-                if (k == 0 || k == 9) {
-                    stars += "*";
-                } else if (k == 1 || k == 8) {
-                    stars += " ";
-                } else {
+//     for (var i = 1; i < arr.length; i++) {
+//         if (longestString < arr[i].length) {
+//             longestString = arr[i].length;
+//         }
+//     }
 
-                    for (h = 0; h < v[n].length; h++) {
-                        stars += v[n][h];
-                    }
-                    n++;
-                }
-               
-            }
-
-
-        }
-        stars += "\n";
-
-    }
-    return stars;
-}
-console.log(frame_star(s));
+//     for (var i = 0; i < arr.length + 2; i++) {
+//         if (i === 0 || i === arr.length + 1) {
+//             for (var j = 0; j <= longestString + 4; j++) {
+//                 stars += "*";
+//             }
+//         } else {
+//             for (var k = 0; k <= longestString + 4; k++) {
+//                 //stars = "";
+//                 if (k == 0 || k == longestString + 4) {
+//                     stars += "*";
+//                 } else if (k == 1 || k == longestString + 3) {
+//                     stars += " ";
+//                 } else {
+//                     console.log(arr[n]);
+//                     var n = 0;
+//                     if (arr[n].length == longestString) {
+//                         stars += arr[n][l];
+//                         k++;
+//                     } else {
+                        
+//                     }
+//                     n++;
+//                 }         
+//             }
+//         }
+//         stars += "\n";
+//     }
+//     return stars;
+// }
+// console.log(frame_star(arr));
 
 
 
