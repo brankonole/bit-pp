@@ -35,9 +35,13 @@
         this.getAverage = function() {
             var sum = 0;
             var mean;
-            for (var i = 0; i < this.list.length; i++) {
-                sum += this.list[i].price;
-            }
+            // for (var i = 0; i < this.list.length; i++) {
+            //     sum += this.list[i].price;
+            // }
+            this.list.forEach(function(product) {
+                sum += product.price;
+            })
+        
             mean = sum / this.list.length;
 
             return mean.toFixed(3);
@@ -57,9 +61,12 @@
         this.calculateTotalPrice = function() {
             var sum = 0;
 
-            for (var i = 0; i < this.list.length; i++) {
-                sum += this.list[i].price;
-            }
+            // for (var i = 0; i < this.list.length; i++) {
+            //     sum += this.list[i].price;
+            // }
+            this.list.forEach(function(product) {
+                sum += product.price;
+            });
             return sum;
         }
     }
