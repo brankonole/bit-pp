@@ -41,20 +41,24 @@
         }
     }
 
-    function Festival (name,list,numbers) {
+    function Festival (name,programs,numOfAllMovies) {
         this.name = name;
-        this.listOfPrograms = [];
+        this.listOfPrograms = programs;
         this.numOfAllMovies = numOfAllMovies;
         this.addProgram = function (program) {
             this.listOfPrograms.push(program);
         }
-
+        this.getData = function () {
+            
+        }
     }
 
     var drama = new Genre('Drama');
+    var action = new Genre('Action');
     var movieOne = new Movie('12 Years a Slave', drama, '120');
+    var movieTwo = new Movie('Mission impossible', action, '99');
     var program = new Program('10.10.2020.', [movieOne], 1);
-    var p = new Program('10.10.2020.', [movieOne], );
+    var p = new Program('10.10.2020.', [movieOne, movieTwo], );
 
     console.log(p.getData());
 })();
