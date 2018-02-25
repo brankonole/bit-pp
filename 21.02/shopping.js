@@ -85,8 +85,6 @@
         }
     }
 
-
-
     var coffeeExpirationDate = new Date(2018, 7, 23);
     var coffee = new Product('Grand kafa', 102.45, coffeeExpirationDate);
     var milk = new Product('Moja kravica', 89.99, new Date(2018, 3, 21));
@@ -102,5 +100,4 @@
 //     console.log(milk.getInfo());
 //     console.log(iceCream.getInfo());
 //     console.log(y.getAverage());
-// 
 })();
