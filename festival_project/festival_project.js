@@ -1,67 +1,71 @@
 'use strict';
 
-(function(){
-    
-    function Genre (name) {
-        this.name = name;
-        this.getData = function() {
+(function () {
+
+        function Genre(name) {
+            this.name = name;
+        }
+
+        Genre.prototype.getData = function () {
             var formattedString;
-            formattedString = this.name[0] + this.name[this.name.length - 1]; 
-            
+            formattedString = this.name[0] + this.name[this.name.length - 1];
             return formattedString.toUpperCase();
         }
-    } 
 
-    function Movie (nameOfMovie, genre, length) {
-        this.title = nameOfMovie;
-        this.genre = genre;
-        this.length = length;
-        this.getData = function() {
+        function Movie(nameOfMovie, genre, length) {
+            this.title = nameOfMovie;
+            this.genre = genre;
+            this.length = length;
+        }
+
+        Movie.prototype.getData = function () {
             return this.title + ', ' + this.length + ', ' + this.genre.getData();
         }
+
+        function Program(date, movies, totalNumOfMovies) {
+            this.date = new Date(date);
+            this.movies = movies || [];
+            this.totalNumOfMovies = totalNumOfMovies || 0;
+        }
+
+    Program.prototype.addMovie = function (titleOfTheMovie) {
+        this.movies.push(titleOfTheMovie);
+        this.totalNumOfMovies = this.movies.length;
     }
 
-    function Program (date, movies, totalNumOfMovies) {
-        this.date = new Date(date);
-        this.movies = movies || [];
-        this.totalNumOfMovies = totalNumOfMovies || 0;
-        this.addMovie = function (titleOfTheMovie) {
-            this.movies.push(titleOfTheMovie);
-            this.totalNumOfMovies = this.movies.length;
-        }
-        this.getData = function() {
-            var moviesLength = 0,
-                moviesList = '';
-            
-            for (var i = 0; i < this.movies.length; i++) {
-                moviesLength += parseInt(this.movies[i].length);
-                moviesList += this.movies[i].getData() + '\n';
-            }
+    Program.prototype.getData = function () {
+        var moviesLength = 0,
+            moviesList = '';
 
-            return this.date + ', ' + moviesLength + '\n' + moviesList;
+        for (var i = 0; i < this.movies.length; i++) {
+            moviesLength += parseInt(this.movies[i].length);
+            moviesList += this.movies[i].getData() + '\n';
         }
+
+        return this.date + ', ' + moviesLength + '\n' + moviesList;
     }
 
-    function Festival (name, programs, numOfAllMovies) {
+    function Festival(name, programs, numOfAllMovies) {
         this.name = name;
         this.listOfPrograms = programs || [];
         this.numOfAllMovies = numOfAllMovies || 0;
-        this.addProgram = function (program) {
-            this.listOfPrograms.push(program);
-            this.numOfAllMovies = 0;
-            for (var i = 0; i < this.listOfPrograms.length; i++) {
-                this.numOfAllMovies += this.listOfPrograms[i].totalNumOfMovies;
-            }
-        }
-        this.getData = function () {
-            var programsList = '';
-            
-            for (var i = 0; i < programs.length; i++) {
-                programsList += programs[i].getData() + '\n';
-            }
+    }
 
-            return name + ', ' + this.numOfAllMovies + '\n' + programsList;
+    Festival.prototype.addProgram = function (program) {
+        this.listOfPrograms.push(program);
+        this.numOfAllMovies = 0;
+        for (var i = 0; i < this.listOfPrograms.length; i++) {
+            this.numOfAllMovies += this.listOfPrograms[i].totalNumOfMovies;
         }
+    }
+    Festival.prototype.getData = function () {
+        var programsList = '';
+
+        for (var i = 0; i < this.listOfPrograms.length; i++) {
+            programsList += this.listOfPrograms[i].getData() + '\n';
+        }
+
+        return this.name + ', ' + this.numOfAllMovies + '\n' + programsList;
     }
 
     function createMovie(title, length, genre) {
@@ -80,12 +84,12 @@
         movie2 = new Movie('Mission impossible', action, '99'),
         movie3 = new Movie('Se7en', mystery, '106'),
         movie4 = new Movie('The Usual Suspects', mystery, '92'),
-        movie5 = new Movie('No Country for Old Men', thriller , '115'),
+        movie5 = new Movie('No Country for Old Men', thriller, '115'),
         movie6 = new Movie('The Prestige', mystery, '132'),
-        movie7 =  createMovie('Black swan', '100', thriller),
-        movie8 =  createMovie('The Green Mile', '94', drama),
-        movie9 =  createMovie('Million Dollar Baby', '132', drama),
-        movie10 =  createMovie('Forrest Gump', '142', drama),
+        movie7 = createMovie('Black swan', '100', thriller),
+        movie8 = createMovie('The Green Mile', '94', drama),
+        movie9 = createMovie('Million Dollar Baby', '132', drama),
+        movie10 = createMovie('Forrest Gump', '142', drama),
         program1 = new Program('10.10.2020.', [movie1, movie2], 2),
         program2 = new Program('10.10.2020.', [movie3, movie4, movie5, movie6], 4),
         program3 = createProgram('12.12.2019.'),
