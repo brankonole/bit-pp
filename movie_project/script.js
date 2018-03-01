@@ -13,13 +13,13 @@ function addMovie(title, length, genre) {
 var movieList = [];
 var sumOfMinutes = 0;
 
+var btn = document.querySelector('.btn');
+var createProgramBtn = document.querySelector('#createProgramBtn');
+var addMovieToProgramBtn = document.querySelector('#ddMovieToProgramBtn');
+var titleMovie = document.querySelector('#title');
+var lengthMovie = document.querySelector('#length');
+var genreMovie = document.querySelector('#genre');
 btn.addEventListener('click', function () {
-    var btn = document.querySelector('.btn');
-    var createProgramBtn = document.querySelector('#createProgramBtn');
-    var addMovieToProgramBtn = document.querySelector('#ddMovieToProgramBtn');
-    var titleMovie = document.querySelector('#title');
-    var lengthMovie = document.querySelector('#length');
-    var genreMovie = document.querySelector('#genre');
     
     var title = titleMovie.value;
     var length = lengthMovie.value;
