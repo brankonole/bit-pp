@@ -2,31 +2,31 @@
 
 (function () {
 
-        function Genre(name) {
-            this.name = name;
-        }
+    function Genre(name) {
+        this.name = name;
+    }
 
-        Genre.prototype.getData = function () {
-            var formattedString;
-            formattedString = this.name[0] + this.name[this.name.length - 1];
-            return formattedString.toUpperCase();
-        }
+    Genre.prototype.getData = function () {
+        var formattedString;
+        formattedString = this.name[0] + this.name[this.name.length - 1];
+        return formattedString.toUpperCase();
+    }
 
-        function Movie(nameOfMovie, genre, length) {
-            this.title = nameOfMovie;
-            this.genre = genre;
-            this.length = length;
-        }
+    function Movie(nameOfMovie, genre, length) {
+        this.title = nameOfMovie;
+        this.genre = genre;
+        this.length = length;
+    }
 
-        Movie.prototype.getData = function () {
-            return this.title + ', ' + this.length + ', ' + this.genre.getData();
-        }
+    Movie.prototype.getData = function () {
+        return this.title + ', ' + this.length + ', ' + this.genre.getData();
+    }
 
-        function Program(date, movies, totalNumOfMovies) {
-            this.date = new Date(date);
-            this.movies = movies || [];
-            this.totalNumOfMovies = totalNumOfMovies || 0;
-        }
+    function Program(date, movies, totalNumOfMovies) {
+        this.date = new Date(date);
+        this.movies = movies || [];
+        this.totalNumOfMovies = totalNumOfMovies || 0;
+    }
 
     Program.prototype.addMovie = function (titleOfTheMovie) {
         this.movies.push(titleOfTheMovie);
