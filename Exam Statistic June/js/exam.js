@@ -7,7 +7,7 @@ Exam.prototype.GetExamInfo = function () {
     return this.subject.getSubjectName() + ", " + this.student.getStudentName();
 }
 Exam.prototype.hasPassed = function () {
-    if (this.grade > 5) {
+    if (this.grade > 5  ) {
         return "Student is passed";
     }
     else {
