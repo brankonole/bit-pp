@@ -3,8 +3,8 @@ function Student(name, surname) {
     this.surname = surname;
 }
 
-Student.prototype.getStudentName = function() {
-    return this.name + ' ' +this.surname;
+Student.prototype.getStudentData = function() {
+    return this.name + ' ' + this.surname;
 }
 
 var student01 = new Student("Pero","Peric");

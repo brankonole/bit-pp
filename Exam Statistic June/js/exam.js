@@ -3,14 +3,15 @@ function Exam(subject, student, grade) {
     this.student = student;
     this.grade = grade;
 }
-Exam.prototype.GetExamInfo = function () {
+
+Exam.prototype.getExamInfo = function () {
     return this.subject.getSubjectName() + ", " + this.student.getStudentName();
 }
+
 Exam.prototype.hasPassed = function () {
-    if (this.grade > 5  ) {
+    if (this.grade > 5) {
         return "Student is passed";
-    }
-    else {
+    } else {
         return "Student isn't passed";
     }
 }

@@ -10,16 +10,6 @@ var grade = addGradeInput.value;
 var isValid = false;
 var grades = [];
 
-function collectInputData() {
-    // return subject + student + grade;
-    var result = {
-        subject: subject,
-        student: student,
-        grade: grade
-    }
-    return result;
-}
-
 function getValidationData() {
     var arrNameAndSurname = document.querySelector('.add-student-name').value.split(" ");
     var arrName = arrNameAndSurname[0];
@@ -50,69 +40,36 @@ function getValidationData() {
 function addStudentToList() {
     var passedList = document.querySelector('.passed-list');
     var failedList = document.querySelector('.failed-list');
-    var itemDiv = document.createElement('div');
-    var itemDivDesc = document.createElement('div');
-    var itemDivRight = document.createElement('div');
-    var itemValue = document.createElement('div');
-    var itemDelete = document.createElement('div');
-    var btnDelete = document.createElement('button');
-    var btnX = document.createTextNode('X');
-    itemDiv.classList.add('item', 'clearfix');
-    itemDivDesc.classList.add('item-description');
-    itemDivRight.classList.add('right', 'clearfix');
-    itemValue.classList.add('item-value');
-    itemDelete.classList.add('item-delete');
-    btnDelete.classList.add('item-delete-btn');
-    btnDelete.appendChild(btnX);
-    // itemDiv.setAttribute('id','passed-0')
 
     if (isValid) {
         if (document.querySelector('.add-grade').value == 5) {
-            var nameOfTheStudent = document.querySelector('.add-student-name').value;
-            var gradeOfTheStudent = document.querySelector('.add-grade').value;
-    
-            console.log(nameOfTheStudent, gradeOfTheStudent);
-    
-            var nameAndSurname = document.createTextNode(nameOfTheStudent.toString());
-            var grade = document.createTextNode(gradeOfTheStudent.toString());
-    
-            itemDivDesc.appendChild(nameAndSurname);
-            itemValue.appendChild(grade);
-    
-    
-            itemDelete.appendChild(btnDelete);
-            itemDiv.appendChild(itemDivDesc);
-            itemDivRight.appendChild(itemValue);
-            itemDivRight.appendChild(itemDelete);
-            itemDiv.appendChild(itemDivRight);
-    
-            failedList.appendChild(itemDiv);
+            failedList.innerHTML += '<div class="item clearfix" id="failed-0">\
+                <div class="item-description">' + addStudentNameInput.value + '</div >\
+                    <div class="right clearfix">\
+                        <div class="item-value">' + addGradeInput.value + '</div>\
+                        <div class="item-delete">\
+                            <button class="item-delete-btn">x</i>\
+                            </button>\
+                        </div>\
+                    </div>\
+                </div>'
         }
-        else {
-            var nameOfTheStudent = document.querySelector('.add-student-name').value;
-            var gradeOfTheStudent = document.querySelector('.add-grade').value;
-    
-            console.log(nameOfTheStudent, gradeOfTheStudent);
-    
-            var nameAndSurname = document.createTextNode(nameOfTheStudent.toString());
-            var grade = document.createTextNode(gradeOfTheStudent.toString());
-    
-            itemDivDesc.appendChild(nameAndSurname);
-            itemValue.appendChild(grade);
-    
-    
-            itemDelete.appendChild(btnDelete);
-            itemDiv.appendChild(itemDivDesc);
-            itemDivRight.appendChild(itemValue);
-            itemDivRight.appendChild(itemDelete);
-            itemDiv.appendChild(itemDivRight);
-    
-            passedList.appendChild(itemDiv);
+        else { 
+            passedList.innerHTML += '<div class="item clearfix" id="failed-0">\
+            <div class="item-description">' + addStudentNameInput.value + '</div >\
+                <div class="right clearfix">\
+                    <div class="item-value">' + addGradeInput.value + '</div>\
+                    <div class="item-delete">\
+                        <button class="item-delete-btn">x</i>\
+                        </button>\
+                    </div>\
+                </div>\
+            </div>'
         }
     }
 }
 
-function statistics () {
+function statistics() {
     var examFailedPercentage = document.querySelector('.exam-failed-percentage');
     var examPassedPercentage = document.querySelector('.exam-passed-percentage');
     var examFailedCount = document.querySelector('.exam-failed-count');
@@ -128,23 +85,23 @@ function statistics () {
             passedStudents++;
         }
     }
-    
+
     examFailedCount.innerHTML = failedStudents;
     examPassedCount.innerHTML = passedStudents;
 
-    examFailedPercentage.innerHTML = (failedStudents/allGrades)*100 + '%';
-    examPassedPercentage.innerHTML = (passedStudents/allGrades)*100 + '%';
-    
+    examFailedPercentage.innerHTML = ((failedStudents / allGrades) * 100).toFixed(0) + '%';
+    examPassedPercentage.innerHTML = ((passedStudents / allGrades) * 100).toFixed(0) + '%';
+
 }
 
 addBtn.addEventListener('click', function () {
-
     getValidationData();
     addStudentToList();
     statistics();
 
     if (isValid) {
         addStudentNameInput.value = "";
+        addStudentNameInput.placeholder = "Name Surname";
         addGradeInput.value = "";
     }
 
