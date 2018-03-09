@@ -26,7 +26,7 @@ var addMovieToProgramBtn = document.querySelector('#addMovieToProgramBtn');
 var titleMovie = document.querySelector('#title');
 var lengthMovie = document.querySelector('#length');
 var genreMovie = document.querySelector('#genre');
-btn.addEventListener('click', function () {
+btn.addEventListener('click', () => {
 
     var title = titleMovie.value;
     var length = lengthMovie.value;
