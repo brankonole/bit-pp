@@ -1,5 +1,4 @@
 const dataModule = (function () {
-
     class TVShows {
         constructor(show, limit) {
             this.show = show;
@@ -19,7 +18,6 @@ const dataModule = (function () {
             this.fullName = fullName;
         }
     }
-
     
     class Show {
         constructor(name, img, id, details) {
