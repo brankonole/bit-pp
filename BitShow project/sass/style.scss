@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+a, a:hover { text-decoration: none; }
 .search-wrapper {
     justify-content: flex-end;    
 }
@@ -11,6 +12,25 @@
     background-color: gray;
     color: white;
 }
+.form { position: relative; }
+.search-ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-right: .5rem;
+    width: 100%;
+    list-style: none;
+    padding: 10px 0;
+    display: block;
+a{display: block; }
+}
+.wrapper { padding: 0 10%; }
+.box {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.box-title { border: 1px solid grey;}
 footer {
     color: white;
     text-align: center;

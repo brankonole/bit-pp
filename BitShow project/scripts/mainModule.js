@@ -21,15 +21,16 @@ const mainModule = (function (uim, dm) {
         });
     }
 
-    // function addHandler() {
-    //     $(document).ready('click', function() {
-
-    //     })
-    // }
+    function addHandler() {
+        $('h2').on('click', function() {
+            uim.showSearchList();
+        })
+    }
 
     return {
         init: function () {
             getData();
+            addHandler();
         }
     }
 })(UIModule, dataModule);
