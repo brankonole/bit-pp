@@ -14,11 +14,11 @@ const UIModule = (function () {
                 arrImgs.push(data[i].image.medium);
             }
         });
-        
+
         for (let i = 0; i < 50; i++) {
             idOfShow = data[i].id;
 
-            const div = $(`<div data-id-show="${idOfShow}" class="box col-4"><a href="#"><img src="${arrImgs[i]}" /><p class="box-title">${arrTitles[i]}</p></a></div>`);
+            const div = $(`<div data-id-show="${idOfShow}" class="box col-4"><a href="show-info.html" target="_blank"><img src="${arrImgs[i]}" /><p class="box-title">${arrTitles[i]}</p></a></div>`);
             wrapperDiv.append(div);
         }
 
@@ -34,8 +34,8 @@ const UIModule = (function () {
 
         searchUl.html('');
 
-        data.forEach(function(e ,i) {
-            if (e.name.toUpperCase().includes(filter) && searchUl.find('li').length < 10) {   
+        data.forEach(function (e, i) {
+            if (e.name.toUpperCase().includes(filter) && searchUl.find('li').length < 10) {
                 searchList = searchUl.append($(`<li class="list-item"><a href="#">${e.name}</a></li>`));
             }
         })
@@ -44,11 +44,25 @@ const UIModule = (function () {
             searchUl.html('');
         }
 
-        return searchList;        
+        return searchList;
+    }
+
+    function bla(e) {
+        let dataIdShow = e.currentTarget.attributes[0].value;
+
+        localStorage.setItem('id', dataIdShow);
+    }
+
+    function castThing(e) {
+        let idCast = e.person.name;
+        localStorage.setItem('cast', idCast);
+        
     }
 
     return {
         displayShows,
-        showSearchList
+        showSearchList,
+        bla
+        // castThing
     }
 })();
