@@ -17,12 +17,27 @@ a, a:hover { text-decoration: none; }
     position: absolute;
     top: 100%;
     left: 0;
-    padding-right: .5rem;
-    width: 100%;
-    list-style: none;
-    padding: 10px 0;
     display: block;
-a{display: block; }
+    width: 100%;
+    padding-right:  .5rem;
+    background-color: #fff;
+    border: 1px solid grey;
+    list-style: none;
+    z-index: 1;
+    li {
+        padding: 0 15px;
+        &:last-child a { border-bottom: none; }
+    }
+    a {
+        display: block;
+        padding: 10px;
+        color: grey;
+        border-bottom: 1px solid grey;
+    }
+}
+.main-wrapper h1 {
+    margin: 30px 0;
+    text-align: center;
 }
 .wrapper { padding: 0 10%; }
 .box {
@@ -30,7 +45,7 @@ a{display: block; }
     justify-content: center;
     text-align: center;
 }
-.box-title { border: 1px solid grey;}
+.box-title { border: 1px solid grey; }
 footer {
     color: white;
     text-align: center;
@@ -40,3 +55,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.main-img {
+    width: 50%;
+    height: 100%;
+}
+.aside {
+    padding: 20px;
+    li { list-style-position: inside; padding-left: 10px;  }
+}
+.wrapper-bottom { padding: 30px 0; }

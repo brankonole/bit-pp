@@ -1,9 +1,12 @@
 const UIModule = (function () {
     const wrapperDiv = $('.js-wrapper');
+    const searchInput = $('.js-search-input');
+    const searchUl = $('#searchUl');
 
     function displayShows(data) {
         let arrTitles = [];
         let arrImgs = [];
+        let idOfShow;
 
         data.forEach((e, i) => {
             if (i < 50) {
@@ -11,32 +14,37 @@ const UIModule = (function () {
                 arrImgs.push(data[i].image.medium);
             }
         });
-
+        
         for (let i = 0; i < 50; i++) {
-            const div = $(`<div class="box col-4"><a href="#"><img src="${arrImgs[i]}" /><p class="box-title">${arrTitles[i]}</p></a></div>`);
+            idOfShow = data[i].id;
 
+            const div = $(`<div data-id-show="${idOfShow}" class="box col-4"><a href="#"><img src="${arrImgs[i]}" /><p class="box-title">${arrTitles[i]}</p></a></div>`);
             wrapperDiv.append(div);
         }
+
         return [arrTitles, arrImgs];
+
 
     }
 
-    function showSearchList() {
-        let  filter, li, a, i;
-        const searchInput = $('.js-search-input');
-        const searchUl = $('#searchUl');
+    function showSearchList(data) {
+        let searchList;
+        let searchInputVal = searchInput.val();
+        let filter = searchInputVal.toUpperCase();
 
-        filter = searchInput.val().toUpperCase();
-        li = searchUl.find("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
+        searchUl.html('');
 
+        data.forEach(function(e ,i) {
+            if (e.name.toUpperCase().includes(filter) && searchUl.find('li').length < 10) {   
+                searchList = searchUl.append($(`<li class="list-item"><a href="#">${e.name}</a></li>`));
             }
+        })
+
+        if (searchInputVal == '') {
+            searchUl.html('');
         }
+
+        return searchList;        
     }
 
     return {

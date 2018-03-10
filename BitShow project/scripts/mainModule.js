@@ -11,7 +11,7 @@ const mainModule = (function (uim, dm) {
 
             request.done(function (response) {
                 console.log(response);
-                
+
                 console.log(uim.displayShows(response));
             })
 
@@ -22,17 +22,33 @@ const mainModule = (function (uim, dm) {
     }
 
     function addHandler() {
-        $('h2').on('click', function() {
-            uim.showSearchList();
+        $('.js-search-input').on('keyup', function (event) {
+            $(document).ready(() => {
+                const request = $.ajax({
+                    url: url,
+                    method: "GET"
+                });
+
+                request.done(function (response) {
+                    uim.showSearchList(response);
+                })
+
+                request.fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            });
+        })
+
+    }
+
+    function showInfo() {
+        $('body').on('click', '.box', function() {
+            let dataIdShow = $(this).getAttribute('data-id-show');
         })
     }
 
     return {
-        init: function () {
-            getData();
-            addHandler();
-        }
+        getData,
+        addHandler
     }
 })(UIModule, dataModule);
-
-mainModule.init();
