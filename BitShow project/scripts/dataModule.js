@@ -1,8 +1,32 @@
 const dataModule = (function () {
+    const url = 'http://api.tvmaze.com/shows';
+
     class TVShows {
-        constructor(show, limit) {
-            this.show = show;
+        constructor(shows = {}, limit = 50) {
+            this.shows = shows;
             this.limit = limit;
+        }
+
+        fetchShows(success, error) {
+            const request = $.ajax({
+                url: url,
+                method: "GET"
+            });
+
+            request.done(function (response) {
+                typeof success === 'function' ? success(response) : null;
+            })
+
+            request.fail(function (jqXHR, textStatus) {
+                typeof error === 'function' ? error(textStatus) : null;
+            });
+        }
+
+        populateShows(data = []) {
+            for (let i = 0; i < this.limit; i++) {
+                let s = new Show(data[i].name, data[i].image.original, data[i].id, data[i].summary);
+                this.shows[data[i].id] = s;
+            }
         }
     }
 
@@ -14,40 +38,113 @@ const dataModule = (function () {
     }
 
     class Cast {
-        constructor(fullName) {
+        constructor(fullName, url) {
             this.fullName = fullName;
-        }
-    }
-    
-    class Show {
-        constructor(name, img, id, details) {
-            this.name = name;
-            this.img = img;
-            this.id = id;
-            this.seasons = [];
-            this.cast = [];
-            this.details = details;
-        }
-        addSeason(season){
-            this.seasons.push(season);
-        }
-        addCast(actor){
-            this.cast.push(actor);
+            this.url = url;
         }
     }
 
+    class Show {
+        constructor(name, img, id, details) {
+            this.id = id;
+            this.name = name;
+            this.img = img;
+            this.details = details;
+            this.cast = [];
+            this.seasons = [];
+        }
+
+        fetchAndPopulateAdditionalData(callback) {
+            const ajax1 = this.fetchCastData((response) => {
+                this.populateCast(response);
+            }, (error) => {
+                alert("Request failed: " + error);
+            });
+
+            const ajax2 = this.fetchSeasonsData((response) => {
+                this.populateSeasons(response);
+            }, (error) => {
+                alert("Request failed: " + error);
+            });
+
+            $.when(ajax1, ajax2).then(() => {
+                typeof callback === 'function' ? callback() : null;
+            });
+        }
+
+        fetchCastData(success, error) {
+            const id = this.id;
+            const request = $.ajax({
+                url: `${url}/${id}/cast`,
+                method: "GET"
+            });
+
+            request.done(function (response) {
+                typeof success === 'function' ? success(response) : null;
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                typeof error === 'function' ? error(textStatus) : null;
+            });
+
+            return request;
+        }
+
+        populateCast(data = []) {
+            data.forEach(e => {
+                const actor = new Cast(e.person.name, e.person.url);
+                this.cast.push(actor);
+            });
+        }
+
+        fetchSeasonsData(success, error) {
+            const id = this.id;
+            const request = $.ajax({
+                url: `${url}/${id}/seasons`,
+                method: "GET"
+            });
+
+            request.done(function (response) {
+                typeof success === 'function' ? success(response) : null;
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                typeof error === 'function' ? error(textStatus) : null;
+            });
+
+            return request;
+        }
+
+        populateSeasons(data = []) {
+            data.forEach(e => {
+                const season = new Season(e.premiereDate, e.endDate);
+                this.seasons.push(season);
+            });
+        }
+    }
+
+    function fetchShowData(id, success, error) {
+        const request = $.ajax({
+            url: `${url}/${id}`,
+            method: "GET"
+        });
+
+        request.done(function (response) {
+            typeof success === 'function' ? success(response) : null;
+        })
+
+        request.fail(function (jqXHR, textStatus) {
+            typeof error === 'function' ? error(textStatus) : null;
+        });
+    }
+
     return {
-        createTVShow: function(show, limit) {
+        createTVShow: function (show, limit) {
             return new TVShows(show, limit);
         },
-        createSeason: function(startDate, endDate) {
-            return new Season(startDate, endDate);
-        },
-        createCast: function(fullName) {
-            return new Cast(fullName);
-        },
-        createShow: function(name, img, id, details) {
+        createShow: function (name, img, id, details) {
             return new Show(name, img, id, details);
-        }
+        },
+        fetchShowData
     }
 })();

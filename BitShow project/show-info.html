@@ -13,61 +13,24 @@
 
 <body>
     <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light container">
+        <nav class="navbar navbar-expand-lg navbar-light container nav">
             <h2>BitShow</h2>
-            <div class="collapse navbar-collapse search-wrapper" id="navbarTogglerDemo01">
+            <div class="search-wrapper" id="navbarTogglerDemo01">
                 <form class="form-inline my-2 my-lg-0 form">
-                    <input class="form-control mr-sm-2 search-bar pull-right search-input js-search-input" type="search" placeholder="Search"
-                        aria-label="Search" />
+                    <input class="form-control search-bar pull-right search-input js-search-input" type="search" placeholder="Search" aria-label="Search"
+                    />
                     <ul id="searchUl" class="search-ul"></ul>
                 </form>
             </div>
         </nav>
     </header>
     <main>
-        <div class="main-wrapper container wrapper">
-            <h1>Game of thrones</h1>
-            <div class="wrapper-top row">
-                <img src="got.png" alt="" class="main-img col-6">
-                <div class="aside col-6">
-                    <div class="seasons">
-                        <h4 class="title">Seasons(8)</h4>
-                        <ul>
-                            <li>fbd</li>
-                            <li>dfbdb</li>
-                            <li>dfbd</li>
-                            <li>dbfdb</li>
-                            <li>bddf</li>
-                        </ul>
-                    </div>
-                    <div class="cast">
-                        <h4 class="title">Cast</h4>
-                        <ul>
-                            <li>fbd</li>
-                            <li>dfbdb</li>
-                            <li>dfbd</li>
-                            <li>dbfdb</li>
-                            <li>bddf</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="wrapper-bottom">
-                <h4>Show Deatails</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus asperiores doloremque excepturi cum aspernatur ullam
-                    perspiciatis impedit eligendi, est optio voluptates fugiat ratione at quasi voluptas atque, veritatis
-                    veniam omnis.
-                </p>
-            </div>
-        </div>
-        <div class="box-wrapper">
-            <div class="box-top"></div>
-            <div class="box-bottom"></div>
-        </div>
+        <div class="main-wrapper js-main-wrapper container wrapper"></div>
     </main>
-    <footer class="container">
-        <p>Copyright &copy; Bit Student 2018</p>
+    <footer class="footer">
+        <div class="content container">
+            <p class="footer-desc">Copyright &copy; Bit Student 2018</p>
+        </div>
     </footer>
 
 
@@ -79,13 +42,8 @@
     <script src="scripts/UIModule.js"></script>
     <script src="scripts/mainModule.js"></script>
     <script>
-            // mainModule.getData();
-            // mainModule.castThing();
-            mainModule.getCastData();
-            mainModule.getSeasonData();    
-            mainModule.getShowData();
-            mainModule.rRrrrr();
-        </script>
+        mainModule.initShowDetails();
+    </script>
 </body>
 
 </html>
