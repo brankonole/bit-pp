@@ -21,6 +21,8 @@ a, a:hover {
   justify-content: space-between; }
   .nav h2 {
     margin-right: 5px; }
+  .nav .logo {
+    color: #fff; }
 
 .form {
   position: relative; }

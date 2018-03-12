@@ -1,60 +1,59 @@
-const mainModule = (function (uim, dm) {
-    const url = 'http://api.tvmaze.com/shows';
+import * as dmHelpers from './dataModule.js';
+import * as uimHelpers from './UIModule.js';
 
-    function addSearchHandler() {
-        $('.js-search-input').on('keyup', function (event) {
-            const request = $.ajax({
-                url: url,
-                method: "GET"
-            });
+const url = 'http://api.tvmaze.com/shows';
 
-            request.done(function (response) {
-                uim.showSearchList(response);
-            })
-
-            request.fail(function (jqXHR, textStatus) {
-                alert("Request failed: " + textStatus);
-            });
+function addSearchHandler() {
+    $('.js-search-input').on('keyup', function (event) {
+        const request = $.ajax({
+            url: url,
+            method: "GET"
         });
 
-        $(document).on('click', '.js-search-list-item', function() {
-            const id = $(this).data('id');
-            localStorage.setItem('id', id);
+        request.done(function (response) {
+            uimHelpers.showSearchList(response);
         })
-    }
 
-    function initShowList() {
-        const tvShow = dm.createTVShow();
-
-        addSearchHandler();
-        uim.addShowListHandler();
-
-        tvShow.fetchShows((response) => {
-            tvShow.populateShows(response);
-            uim.displayShows(tvShow.shows);
-        }, (error) => {
-            alert("Request failed: " + error);
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
         });
-    }
+    });
 
-    function initShowDetails() {
-        const idShow = localStorage.getItem('id');
+    $(document).on('click', '.js-search-list-item', function() {
+        const id = $(this).data('id');
+        localStorage.setItem('id', id);
+    })
+}
 
-        addSearchHandler();
+function initShowList() {
+    const tvShow = dmHelpers.createTVShow();
 
-        dm.fetchShowData(idShow, (r) => {
-            const show = dm.createShow(r.name, r.image.original, r.id, r.summary);
+    addSearchHandler();
+    uimHelpers.addShowListHandler();
 
-            show.fetchAndPopulateAdditionalData(() => {
-                uim.displayShow(show);
-            });            
-        }, (error) => {
-            alert("Request failed: " + error);
-        })
-    }
+    tvShow.fetchShows((response) => {
+        tvShow.populateShows(response);
+        uimHelpers.displayShows(tvShow.shows);
+    }, (error) => {
+        alert("Request failed: " + error);
+    });
+}
 
-    return {
-        initShowList,
-        initShowDetails
-    }
-})(UIModule, dataModule);
+function initShowDetails() {
+    const idShow = localStorage.getItem('id');
+
+    addSearchHandler();
+
+    dmHelpers.fetchShowData(idShow, (r) => {
+        const show = dmHelpers.createShow(r.name, r.image.original, r.id, r.summary);
+
+        show.fetchAndPopulateAdditionalData(() => {
+            uimHelpers.displayShow(show);
+        });            
+    }, (error) => {
+        alert("Request failed: " + error);
+    })
+}
+
+initShowList();
+initShowDetails();
