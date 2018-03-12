@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    margin: 100px 0;
+    background-image: url('http://baltimoresportsandlife.com/wp-content/uploads/2016/07/Movies.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+} 
+.container {
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.container h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+.first-frame {
+    background-color: rgba(134, 123, 123, 0.86);
+}
+.first-frame, .second-frame {
+    padding: 20px;
+}
+h3 { margin: 0 0 10px 10px; }
+input {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0;
+    padding: 0 20px;
+    border: 2px solid #58afb7;
+    border-radius: 20px;
+    outline: 0;
+}
+.btn {
+    height: 50px;
+    margin-bottom: 30px;
+    background-color: #58afb7;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 25px;
+}
+.btn:hover {
+    background-color: rgba(134, 123, 123, 0.5);
+    border: solid 2px  #58afb7;
+}
+select {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0;
+    padding: 0 20px;
+    border: solid 2px  #58afb7;
+    border-radius: 20px;
+    outline: 0;
+}
+.par { color: red; }
+.par2 {
+    margin-top: 10px;
+    text-align: right;
+    color: #440956;
+}
+.movie-item, .program-item {
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+}
+.movie-item:nth-child(odd), .program-item:nth-child(odd) {
+    background-color: #d0d0d0;
+    color: #000;
+}
+.program-list { margin-bottom: 10px; }
+label { margin-left: 10px; font-weight: bold; }
+
